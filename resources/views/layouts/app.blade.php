@@ -18,6 +18,9 @@
         body {
             font-family: 'Poppins', sans-serif;
             background-color: #f5f8fb;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         .navbar {
@@ -51,6 +54,21 @@
             background-color: #0a2850;
             color: #fff;
             text-align: center;
+        }
+
+        .footer-admin {
+            background: #0a2850;
+            color: #fff;
+            text-align: center;
+            padding: 18px 0 12px 0;
+            font-size: 1.08rem;
+            letter-spacing: 0.5px;
+            margin-top: auto;
+            width: 100%;
+        }
+
+        .main-app-content {
+            flex: 1 0 auto;
         }
     </style>
 
@@ -89,13 +107,13 @@
     </nav>
 
     <!-- Content -->
-    <div class="container">
+    <div class="main-app-content container flex-grow-1">
         @yield('content')
     </div>
 
     <!-- Footer -->
-    <footer>
-        &copy; {{ date('Y') }} Sistem Antrian RS - Annisa Project
+    <footer class="footer-admin">
+        &copy; {{ date('Y') }} Sistem Antrian RS - Annisa Salsabila. All rights reserved.
     </footer>
 
     <!-- JS -->

@@ -14,4 +14,9 @@ class AnnisaPoli extends Model
     {
         return $this->hasMany(AnnisaAntrian::class, 'poli_id');
     }
+
+    public function dokters()
+    {
+        return $this->hasMany(AnnisaDokter::class, 'poli_id');
+    }
 }

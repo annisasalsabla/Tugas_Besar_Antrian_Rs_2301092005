@@ -9,8 +9,15 @@
     <style>
         body {
             display: flex;
+            flex-direction: column;
             min-height: 100vh;
             background-color: #f4f7fa;
+        }
+        .layout-wrapper {
+            display: flex;
+            flex-direction: row;
+            flex: 1 1 auto;
+            min-height: 0;
         }
         .sidebar {
             width: 250px;
@@ -64,41 +71,56 @@
             background: #0a2850;
             color: #fff;
         }
+        .footer-admin {
+            background: #0a2850;
+            color: #fff;
+            text-align: center;
+            padding: 18px 0 12px 0;
+            font-size: 1.08rem;
+            letter-spacing: 0.5px;
+            margin-top: auto;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
-    <div class="sidebar">
-        <div class="sidebar-header">
-            Petugas RS
+    <div class="layout-wrapper">
+        <div class="sidebar">
+            <div class="sidebar-header">
+                Petugas RS
+            </div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link{{ request()->routeIs('petugas.dashboard') ? ' active' : '' }}" href="{{ route('petugas.dashboard') }}">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link{{ request()->routeIs('petugas.antrian.index') ? ' active' : '' }}" href="{{ route('petugas.antrian.index') }}">
+                        <i class="fas fa-list-alt"></i> Daftar Antrian
+                    </a>
+                </li>
+            </ul>
         </div>
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link{{ request()->routeIs('petugas.dashboard') ? ' active' : '' }}" href="{{ route('petugas.dashboard') }}">
-                    <i class="fas fa-tachometer-alt"></i> Dashboard
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link{{ request()->routeIs('petugas.antrian.index') ? ' active' : '' }}" href="{{ route('petugas.antrian.index') }}">
-                    <i class="fas fa-list-alt"></i> Daftar Antrian
-                </a>
-            </li>
-        </ul>
-    </div>
 
-    <div class="main-content">
-        <div class="topbar">
-            <div class="d-flex align-items-center">
-                <span class="me-3">Halo, {{ auth()->user()->name }}</span>
-                <form action="{{ route('logout') }}" method="POST" class="d-inline">
-                    @csrf
-                    <button class="btn btn-logout btn-sm">Logout</button>
-                </form>
+        <div class="main-content">
+            <div class="topbar">
+                <div class="d-flex align-items-center">
+                    <span class="me-3">Halo, {{ auth()->user()->name }}</span>
+                    <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                        @csrf
+                        <button class="btn btn-logout btn-sm">Logout</button>
+                    </form>
+                </div>
+            </div>
+            <div class="container-fluid p-4">
+                @yield('content')
             </div>
         </div>
-        <div class="container-fluid p-4">
-            @yield('content')
-        </div>
     </div>
+    <footer class="footer-admin">
+        &copy; {{ date('Y') }} Sistem Antrian RS - Annisa Salsabila. All rights reserved.
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html> 

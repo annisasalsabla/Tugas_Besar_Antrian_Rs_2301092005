@@ -7,9 +7,11 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AntrianController;
 use App\Http\Controllers\Petugas\AntrianController as PetugasAntrianController;
 use App\Http\Controllers\MonitorController;
+use App\Models\AnnisaPoli;
 
 Route::get('/', function () {
-    return view('frontend.home');
+    $polis = AnnisaPoli::with('dokters')->get();
+    return view('frontend.home', compact('polis'));
 });
 
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
