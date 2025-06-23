@@ -74,4 +74,14 @@ class PasienController extends Controller
         $pasien->delete();
         return redirect()->route('admin.pasien.index')->with('success', 'Data pasien berhasil dihapus.');
     }
+
+    /**
+     * Show the queue history for a patient.
+     */
+    public function riwayat($id)
+    {
+        $pasien = AnnisaPasien::findOrFail($id);
+        $antrians = $pasien->antrians()->with('poli')->orderByDesc('tanggal')->get();
+        return view('admin.pasien.riwayat', compact('pasien', 'antrians'));
+    }
 }

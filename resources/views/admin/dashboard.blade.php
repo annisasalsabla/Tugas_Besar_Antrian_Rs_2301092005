@@ -3,104 +3,71 @@
 @section('title', 'Dashboard Admin')
 
 @section('content')
-<style>
-    body {
-        background-color: #f5f8fb;
-        font-family: 'Poppins', sans-serif;
-    }
+<h3 class="mb-4">Dashboard</h3>
 
-    .dashboard-card {
-        background: white;
-        border-radius: 15px;
-        padding: 25px;
-        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-        transition: all 0.3s ease;
-        border-left: 6px solid #0a2850;
-    }
-
-    .dashboard-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 0 25px rgba(0, 0, 0, 0.15);
-    }
-
-    .dashboard-card h5 {
-        color: #0a2850;
-        font-weight: 600;
-    }
-
-    .dashboard-welcome {
-        font-size: 24px;
-        font-weight: bold;
-        color: #0a2850;
-        margin-bottom: 30px;
-    }
-
-    .stat-icon {
-        font-size: 2rem;
-        color: #0a2850;
-        margin-right: 10px;
-    }
-
-    .stat-label {
-        font-weight: 600;
-    }
-
-    @media (max-width: 576px) {
-        .dashboard-welcome {
-            font-size: 20px;
-        }
-    }
-</style>
-
-<div class="container mt-4">
-    <div class="dashboard-welcome text-center">
-        Selamat datang, Admin! 👋
+<div class="row">
+    <!-- Card Total Pasien -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-primary shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Total Pasien</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalPasien }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-users fa-2x text-gray-300"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div class="row g-4">
-        <div class="col-md-3 col-sm-6">
-            <div class="dashboard-card">
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-users stat-icon"></i>
-                    <div>
-                        <h5>120</h5>
-                        <div class="stat-label">Pasien Terdaftar</div>
+    <!-- Card Total Dokter -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-success shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-success text-uppercase mb-1">Total Dokter</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalDokter }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-user-md fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="col-md-3 col-sm-6">
-            <div class="dashboard-card">
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-user-md stat-icon"></i>
-                    <div>
-                        <h5>10</h5>
-                        <div class="stat-label">Dokter Aktif</div>
+    <!-- Card Total Poli -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-info shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Poli</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $totalPoli }}</div>
+                    </div>
+                    <div class="col-auto">
+                        <i class="fas fa-hospital-alt fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div class="col-md-3 col-sm-6">
-            <div class="dashboard-card">
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-clinic-medical stat-icon"></i>
-                    <div>
-                        <h5>6</h5>
-                        <div class="stat-label">Poli Tersedia</div>
+    <!-- Card Antrian Hari Ini -->
+    <div class="col-xl-3 col-md-6 mb-4">
+        <div class="card border-left-warning shadow h-100 py-2">
+            <div class="card-body">
+                <div class="row no-gutters align-items-center">
+                    <div class="col mr-2">
+                        <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Antrian Hari Ini</div>
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ $antrianHariIni }}</div>
                     </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 col-sm-6">
-            <div class="dashboard-card">
-                <div class="d-flex align-items-center">
-                    <i class="fas fa-notes-medical stat-icon"></i>
-                    <div>
-                        <h5>48</h5>
-                        <div class="stat-label">Antrian Hari Ini</div>
+                    <div class="col-auto">
+                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
@@ -108,6 +75,13 @@
     </div>
 </div>
 
-<!-- FontAwesome for icons -->
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+<style>
+    .card .border-left-primary { border-left: .25rem solid #4e73df!important; }
+    .card .border-left-success { border-left: .25rem solid #1cc88a!important; }
+    .card .border-left-info { border-left: .25rem solid #36b9cc!important; }
+    .card .border-left-warning { border-left: .25rem solid #f6c23e!important; }
+    .text-xs { font-size: .7rem; }
+    .text-gray-300 { color: #dddfeb!important; }
+    .text-gray-800 { color: #5a5c69!important; }
+</style>
 @endsection

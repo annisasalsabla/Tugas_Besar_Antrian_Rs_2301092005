@@ -30,6 +30,7 @@
                 <td>{{ $pasien->no_hp }}</td>
                 <td>
                     <a href="{{ route('admin.pasien.edit', $pasien->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                    <a href="{{ route('admin.pasien.riwayat', $pasien->id) }}" class="btn btn-sm btn-info">Riwayat</a>
                     <form action="{{ route('admin.pasien.destroy', $pasien->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin hapus data?')">
                         @csrf
                         @method('DELETE')

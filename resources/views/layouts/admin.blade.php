@@ -92,6 +92,11 @@
                     <i class="fas fa-user-injured"></i> Data Pasien
                 </a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link{{ request()->routeIs('admin.dokter.*') ? ' active' : '' }}" href="{{ route('admin.dokter.index') }}">
+                    <i class="fas fa-user-md"></i> Data Dokter
+                </a>
+            </li>
         </ul>
     </div>
 
