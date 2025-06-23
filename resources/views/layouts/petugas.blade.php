@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@yield('title', 'Admin - Sistem Antrian RS')</title>
+    <title>@yield('title', 'Petugas - Sistem Antrian RS')</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" />
     <style>
@@ -69,22 +69,17 @@
 <body>
     <div class="sidebar">
         <div class="sidebar-header">
-            Admin RS
+            Petugas RS
         </div>
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link{{ request()->routeIs('admin.dashboard') ? ' active' : '' }}" href="{{ route('admin.dashboard') }}">
+                <a class="nav-link{{ request()->routeIs('petugas.dashboard') ? ' active' : '' }}" href="{{ route('petugas.dashboard') }}">
                     <i class="fas fa-tachometer-alt"></i> Dashboard
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link{{ request()->routeIs('poli.*') ? ' active' : '' }}" href="{{ route('poli.index') }}">
-                    <i class="fas fa-hospital"></i> Data Poli
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link{{ request()->routeIs('petugas.*') ? ' active' : '' }}" href="{{ route('petugas.index') }}">
-                    <i class="fas fa-user-friends"></i> Data Petugas
+                <a class="nav-link" href="#">
+                    <i class="fas fa-list-alt"></i> Daftar Antrian
                 </a>
             </li>
         </ul>

@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
 
     Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::resource('admin/poli', App\Http\Controllers\Admin\PoliController::class);
+        Route::resource('admin/petugas', App\Http\Controllers\Admin\PetugasController::class);
     });
 });
 
