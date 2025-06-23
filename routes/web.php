@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AntrianController;
 
 Route::get('/', function () {
     return redirect('/login');
@@ -24,3 +25,7 @@ Route::middleware('auth')->group(function () {
         })->name('petugas.dashboard');
     });
 });
+
+Route::get('/daftar-antrian', [AntrianController::class, 'showForm'])->name('daftar.antrian');
+Route::post('/daftar-antrian', [AntrianController::class, 'store']);
+Route::get('/bukti-antrian/{id}', [AntrianController::class, 'bukti'])->name('bukti.antrian');
