@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\AntrianController;
+use App\Http\Controllers\Petugas\AntrianController as PetugasAntrianController;
 
 Route::get('/', function () {
     return redirect('/login');
@@ -23,6 +24,10 @@ Route::middleware('auth')->group(function () {
         Route::get('/petugas/dashboard', function () {
             return view('petugas.dashboard');
         })->name('petugas.dashboard');
+
+        Route::get('/petugas/antrian', [PetugasAntrianController::class, 'index'])->name('petugas.antrian.index');
+        Route::post('/petugas/antrian/{id}/panggil', [PetugasAntrianController::class, 'panggil'])->name('petugas.antrian.panggil');
+        Route::post('/petugas/antrian/{id}/selesai', [PetugasAntrianController::class, 'selesai'])->name('petugas.antrian.selesai');
     });
 
     Route::middleware(['auth', 'role:admin'])->group(function () {

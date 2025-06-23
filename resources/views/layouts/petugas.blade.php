@@ -78,7 +78,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">
+                <a class="nav-link{{ request()->routeIs('petugas.antrian.index') ? ' active' : '' }}" href="{{ route('petugas.antrian.index') }}">
                     <i class="fas fa-list-alt"></i> Daftar Antrian
                 </a>
             </li>
