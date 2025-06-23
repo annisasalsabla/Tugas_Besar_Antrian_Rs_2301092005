@@ -78,13 +78,18 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link{{ request()->routeIs('poli.*') ? ' active' : '' }}" href="{{ route('poli.index') }}">
+                <a class="nav-link{{ request()->routeIs('admin.poli.*') ? ' active' : '' }}" href="{{ route('admin.poli.index') }}">
                     <i class="fas fa-hospital"></i> Data Poli
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link{{ request()->routeIs('petugas.*') ? ' active' : '' }}" href="{{ route('petugas.index') }}">
+                <a class="nav-link{{ request()->routeIs('admin.petugas.*') ? ' active' : '' }}" href="{{ route('admin.petugas.index') }}">
                     <i class="fas fa-user-friends"></i> Data Petugas
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link{{ request()->routeIs('admin.pasien.*') ? ' active' : '' }}" href="{{ route('admin.pasien.index') }}">
+                    <i class="fas fa-user-injured"></i> Data Pasien
                 </a>
             </li>
         </ul>

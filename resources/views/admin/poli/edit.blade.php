@@ -5,7 +5,7 @@
 @section('content')
 <div class="container mt-4">
     <h3>Edit Data Poli</h3>
-    <form action="{{ route('poli.update', $poli->id) }}" method="POST">
+    <form action="{{ route('admin.poli.update', $poli->id) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="mb-3">
@@ -17,7 +17,7 @@
             <input type="text" class="form-control" id="lokasi" name="lokasi" value="{{ $poli->lokasi }}" required>
         </div>
         <button type="submit" class="btn btn-primary">Update</button>
-        <a href="{{ route('poli.index') }}" class="btn btn-secondary">Batal</a>
+        <a href="{{ route('admin.poli.index') }}" class="btn btn-secondary">Batal</a>
     </form>
 </div>
 @endsection 

@@ -1,11 +1,10 @@
 @extends('layouts.admin')
 
-@section('title', 'Data Petugas')
+@section('title', 'Data Pasien')
 
 @section('content')
 <div class="d-flex justify-content-between align-items-center mb-3">
-    <h3>Data Petugas</h3>
-    <a href="{{ route('admin.petugas.create') }}" class="btn btn-primary">+ Tambah Petugas</a>
+    <h3>Data Pasien</h3>
 </div>
 @if(session('success'))
     <div class="alert alert-success">{{ session('success') }}</div>
@@ -14,20 +13,24 @@
     <thead>
         <tr>
             <th>No</th>
+            <th>NIK</th>
             <th>Nama</th>
-            <th>Email</th>
+            <th>Alamat</th>
+            <th>No. HP</th>
             <th>Aksi</th>
         </tr>
     </thead>
     <tbody>
-        @forelse($petugas as $p)
+        @forelse($pasiens as $pasien)
             <tr>
                 <td>{{ $loop->iteration }}</td>
-                <td>{{ $p->name }}</td>
-                <td>{{ $p->email }}</td>
+                <td>{{ $pasien->nik }}</td>
+                <td>{{ $pasien->nama }}</td>
+                <td>{{ $pasien->alamat }}</td>
+                <td>{{ $pasien->no_hp }}</td>
                 <td>
-                    <a href="{{ route('admin.petugas.edit', $p->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                    <form action="{{ route('admin.petugas.destroy', $p->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin hapus data?')">
+                    <a href="{{ route('admin.pasien.edit', $pasien->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                    <form action="{{ route('admin.pasien.destroy', $pasien->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin hapus data?')">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-sm btn-danger" type="submit">Hapus</button>
@@ -36,7 +39,7 @@
             </tr>
         @empty
             <tr>
-                <td colspan="4" class="text-center">Belum ada data petugas.</td>
+                <td colspan="6" class="text-center">Belum ada data pasien.</td>
             </tr>
         @endforelse
     </tbody>

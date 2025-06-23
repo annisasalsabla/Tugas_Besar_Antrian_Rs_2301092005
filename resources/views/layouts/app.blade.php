@@ -69,10 +69,7 @@
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     @auth
                         @if(auth()->user()->role === 'admin')
-                            <li class="nav-item">
-                                <a class="nav-link{{ request()->routeIs('poli.*') ? ' active' : '' }}" href="{{ route('poli.index') }}">Data Poli</a>
-                            </li>
-                            <!-- Tambahkan menu lain: Data Pasien, Data Dokter, dsb -->
+                            
                         @endif
                     @endauth
                 </ul>

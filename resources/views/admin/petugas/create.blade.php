@@ -4,7 +4,7 @@
 
 @section('content')
 <h3>Tambah Data Petugas</h3>
-<form action="{{ route('petugas.store') }}" method="POST">
+<form action="{{ route('admin.petugas.store') }}" method="POST">
     @csrf
     <div class="mb-3">
         <label for="name" class="form-label">Nama Lengkap</label>
@@ -26,6 +26,6 @@
         <input type="password" class="form-control" id="password_confirmation" name="password_confirmation" required>
     </div>
     <button type="submit" class="btn btn-primary">Simpan</button>
-    <a href="{{ route('petugas.index') }}" class="btn btn-secondary">Batal</a>
+    <a href="{{ route('admin.petugas.index') }}" class="btn btn-secondary">Batal</a>
 </form>
 @endsection 

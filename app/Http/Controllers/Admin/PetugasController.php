@@ -44,7 +44,7 @@ class PetugasController extends Controller
             'role' => 'petugas',
         ]);
 
-        return redirect()->route('petugas.index')->with('success', 'Data petugas berhasil ditambahkan.');
+        return redirect()->route('admin.petugas.index')->with('success', 'Data petugas berhasil ditambahkan.');
     }
 
     /**
@@ -81,7 +81,7 @@ class PetugasController extends Controller
         }
         $petuga->save();
 
-        return redirect()->route('petugas.index')->with('success', 'Data petugas berhasil diupdate.');
+        return redirect()->route('admin.petugas.index')->with('success', 'Data petugas berhasil diupdate.');
     }
 
     /**
@@ -90,6 +90,6 @@ class PetugasController extends Controller
     public function destroy(User $petuga)
     {
         $petuga->delete();
-        return redirect()->route('petugas.index')->with('success', 'Data petugas berhasil dihapus.');
+        return redirect()->route('admin.petugas.index')->with('success', 'Data petugas berhasil dihapus.');
     }
 }

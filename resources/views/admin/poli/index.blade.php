@@ -6,7 +6,7 @@
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h3>Data Poli</h3>
-        <a href="{{ route('poli.create') }}" class="btn btn-primary">+ Tambah Poli</a>
+        <a href="{{ route('admin.poli.create') }}" class="btn btn-primary">+ Tambah Poli</a>
     </div>
     @if(session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
@@ -27,8 +27,8 @@
                     <td>{{ $poli->nama_poli }}</td>
                     <td>{{ $poli->lokasi }}</td>
                     <td>
-                        <a href="{{ route('poli.edit', $poli->id) }}" class="btn btn-sm btn-warning">Edit</a>
-                        <form action="{{ route('poli.destroy', $poli->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin hapus data?')">
+                        <a href="{{ route('admin.poli.edit', $poli->id) }}" class="btn btn-sm btn-warning">Edit</a>
+                        <form action="{{ route('admin.poli.destroy', $poli->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Yakin hapus data?')">
                             @csrf
                             @method('DELETE')
                             <button class="btn btn-sm btn-danger" type="submit">Hapus</button>

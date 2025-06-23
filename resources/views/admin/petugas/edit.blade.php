@@ -4,7 +4,7 @@
 
 @section('content')
 <h3>Edit Data Petugas</h3>
-<form action="{{ route('petugas.update', $petuga->id) }}" method="POST">
+<form action="{{ route('admin.petugas.update', $petuga->id) }}" method="POST">
     @csrf
     @method('PUT')
     <div class="mb-3">
@@ -27,6 +27,6 @@
         <input type="password" class="form-control" id="password_confirmation" name="password_confirmation">
     </div>
     <button type="submit" class="btn btn-primary">Update</button>
-    <a href="{{ route('petugas.index') }}" class="btn btn-secondary">Batal</a>
+    <a href="{{ route('admin.petugas.index') }}" class="btn btn-secondary">Batal</a>
 </form>
 @endsection 

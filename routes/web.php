@@ -14,25 +14,24 @@ Route::post('/login', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::middleware('auth')->group(function () {
-    Route::middleware(['role:admin'])->group(function () {
-        Route::get('/admin/dashboard', function () {
+    Route::middleware(['role:admin'])->prefix('admin')->name('admin.')->group(function () {
+        Route::get('/dashboard', function () {
             return view('admin.dashboard');
-        })->name('admin.dashboard');
+        })->name('dashboard');
+
+        Route::resource('poli', \App\Http\Controllers\Admin\PoliController::class);
+        Route::resource('petugas', \App\Http\Controllers\Admin\PetugasController::class);
+        Route::resource('pasien', \App\Http\Controllers\Admin\PasienController::class);
     });
 
-    Route::middleware(['role:petugas'])->group(function () {
-        Route::get('/petugas/dashboard', function () {
+    Route::middleware(['role:petugas'])->prefix('petugas')->name('petugas.')->group(function () {
+        Route::get('/dashboard', function () {
             return view('petugas.dashboard');
-        })->name('petugas.dashboard');
+        })->name('dashboard');
 
-        Route::get('/petugas/antrian', [PetugasAntrianController::class, 'index'])->name('petugas.antrian.index');
-        Route::post('/petugas/antrian/{id}/panggil', [PetugasAntrianController::class, 'panggil'])->name('petugas.antrian.panggil');
-        Route::post('/petugas/antrian/{id}/selesai', [PetugasAntrianController::class, 'selesai'])->name('petugas.antrian.selesai');
-    });
-
-    Route::middleware(['auth', 'role:admin'])->group(function () {
-        Route::resource('admin/poli', App\Http\Controllers\Admin\PoliController::class);
-        Route::resource('admin/petugas', App\Http\Controllers\Admin\PetugasController::class);
+        Route::get('/antrian', [PetugasAntrianController::class, 'index'])->name('antrian.index');
+        Route::post('/antrian/{id}/panggil', [PetugasAntrianController::class, 'panggil'])->name('antrian.panggil');
+        Route::post('/antrian/{id}/selesai', [PetugasAntrianController::class, 'selesai'])->name('antrian.selesai');
     });
 });
 

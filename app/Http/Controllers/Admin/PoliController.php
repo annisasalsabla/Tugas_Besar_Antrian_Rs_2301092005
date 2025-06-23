@@ -35,7 +35,7 @@ class PoliController extends Controller
             'lokasi' => 'required',
         ]);
         AnnisaPoli::create($request->only('nama_poli', 'lokasi'));
-        return redirect()->route('poli.index')->with('success', 'Data poli berhasil ditambahkan.');
+        return redirect()->route('admin.poli.index')->with('success', 'Data poli berhasil ditambahkan.');
     }
 
     /**
@@ -66,7 +66,7 @@ class PoliController extends Controller
         ]);
         $poli = AnnisaPoli::findOrFail($id);
         $poli->update($request->only('nama_poli', 'lokasi'));
-        return redirect()->route('poli.index')->with('success', 'Data poli berhasil diupdate.');
+        return redirect()->route('admin.poli.index')->with('success', 'Data poli berhasil diupdate.');
     }
 
     /**
@@ -76,6 +76,6 @@ class PoliController extends Controller
     {
         $poli = AnnisaPoli::findOrFail($id);
         $poli->delete();
-        return redirect()->route('poli.index')->with('success', 'Data poli berhasil dihapus.');
+        return redirect()->route('admin.poli.index')->with('success', 'Data poli berhasil dihapus.');
     }
 }
