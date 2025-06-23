@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('annisa_pasiens', function (Blueprint $table) {
             $table->id();
+            $table->string('nik')->unique();
             $table->string('nama');
             $table->string('alamat');
             $table->date('tanggal_lahir');

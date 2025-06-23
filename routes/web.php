@@ -24,6 +24,10 @@ Route::middleware('auth')->group(function () {
             return view('petugas.dashboard');
         })->name('petugas.dashboard');
     });
+
+    Route::middleware(['auth', 'role:admin'])->group(function () {
+        Route::resource('admin/poli', App\Http\Controllers\Admin\PoliController::class);
+    });
 });
 
 Route::get('/daftar-antrian', [AntrianController::class, 'showForm'])->name('daftar.antrian');

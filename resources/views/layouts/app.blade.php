@@ -24,14 +24,25 @@
             background-color: #0a2850 !important;
         }
 
-        .navbar .navbar-brand,
-        .navbar .nav-link {
+        .navbar-brand, .nav-link, .ms-auto, .navbar-text {
             color: #fff !important;
-            font-weight: 600;
+            font-weight: 500;
         }
 
-        .navbar .nav-link:hover {
-            text-decoration: underline;
+        .nav-link.active, .nav-link:hover {
+            color: #ffc107 !important;
+        }
+
+        .btn-logout {
+            color: #fff;
+            border: 1px solid #fff;
+            margin-left: 10px;
+        }
+
+        .btn-logout:hover {
+            background: #ffc107;
+            color: #0a2850;
+            border: 1px solid #ffc107;
         }
 
         footer {
@@ -48,17 +59,34 @@
 <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg">
+    <nav class="navbar navbar-expand-lg mb-4">
         <div class="container">
             <a class="navbar-brand" href="/">Antrian RS</a>
-            <div class="d-flex">
-                @auth
-                    <span class="nav-link me-3">Halo, {{ auth()->user()->name }}</span>
-                    <form action="{{ url('/logout') }}" method="POST">
-                        @csrf
-                        <button type="submit" class="btn btn-light btn-sm">Logout</button>
-                    </form>
-                @endauth
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    @auth
+                        @if(auth()->user()->role === 'admin')
+                            <li class="nav-item">
+                                <a class="nav-link{{ request()->routeIs('poli.*') ? ' active' : '' }}" href="{{ route('poli.index') }}">Data Poli</a>
+                            </li>
+                            <!-- Tambahkan menu lain: Data Pasien, Data Dokter, dsb -->
+                        @endif
+                    @endauth
+                </ul>
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    @auth
+                        <li class="nav-item navbar-text me-2">Halo, {{ auth()->user()->name }}</li>
+                        <li class="nav-item">
+                            <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                                @csrf
+                                <button class="btn btn-logout btn-sm">Logout</button>
+                            </form>
+                        </li>
+                    @endauth
+                </ul>
             </div>
         </div>
     </nav>

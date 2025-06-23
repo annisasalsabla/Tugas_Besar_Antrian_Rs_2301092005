@@ -14,10 +14,11 @@ return new class extends Migration
         Schema::create('annisa_antrians', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('pasien_id');
-            $table->unsignedBigInteger('dokter_id');
+            $table->unsignedBigInteger('dokter_id')->nullable();
             $table->unsignedBigInteger('poli_id');
             $table->date('tanggal');
             $table->string('status');
+            $table->integer('nomor');
             $table->timestamps();
 
             $table->foreign('pasien_id')->references('id')->on('annisa_pasiens')->onDelete('cascade');
